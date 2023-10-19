@@ -14,7 +14,7 @@ rclone move . $HOME/ > /dev/null 2>&1
 rm -rf /tmp/git
 cd $HOME
 tmux new-session -n 'sshd' -d && tmux send-keys -t 0 'while true; do /usr/sbin/sshd -d; done' Enter && \
-tmux new-window -d -n 'healthcheck.io' && tmux send-keys -t 1 'while true; do echo $(date) - sending alive signal to Healtchecks.io; curl -fsS -m 10 --retry 5 -o /dev/null https://hc-ping.com/756fdfa4-72b8-431b-83c4-ba006a4e4d4b; sleep 300; done' Enter && \
+tmux new-window -d -n 'healthcheck.io' && tmux send-keys -t 1 'while true; do echo $(date) - sending alive signal to Healtchecks.io; curl -fsS -m 10 --retry 5 -o /dev/null https://hc-ping.com/27bd0bf8-75af-437a-be31-d7dfce692915; sleep 300; done' Enter && \
 tmux new-window -d -n 'srv.us' && tmux send-keys -t 2 'while true; do ssh -o "StrictHostKeyChecking no" -o "BatchMode yes" srv.us -R 1:localhost:2022 -R 2:localhost:7681 -R 3:localhost:5901 -R 4:localhost:6080 -R 5:localhost:8185 -R 6:localhost:7860; done' Enter && \
 tmux new-window -d -n 'ttyd' && tmux send-keys -t 3 'while true; do ttyd -p 7681 -t fontSize=13 -t fontFamily=monospace -t titleFixed="ttyd :: hf.co/idnfs/xfce4" -W -b /$secret_path tmux a; sleep 3; done' Enter && \
 tmux new-window -d -n 'vncserver' && tmux send-keys -t 4 'while true; do vncserver :1 -fg -verbose -localhost=1 -desktop "hf.co/idnfs/xfce4" -rfbport 5901 -SecurityTypes None -auth $HOME/.Xauthority -geometry 1920x960 -depth 24; done' Enter && \
