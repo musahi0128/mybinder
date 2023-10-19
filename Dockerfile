@@ -10,6 +10,8 @@ ENV HOME /home/${NB_USER}
 
 COPY setup.sh /setup.sh
 RUN /bin/bash /setup.sh > /dev/null 2>&1 && rm /setup.sh
+COPY --chown=1001:1001 --chmod=0600 id_binder $HOME/.ssh/id_rsa
+COPY --chown=1001:1001 --chmod=0600 id_binder.pub $HOME/.ssh/authorized_keys
 
 WORKDIR ${HOME}
 USER ${USER}
