@@ -1,5 +1,5 @@
 #!/bin/bash
-touch $XAUTHORITY
+touch $HOME/.Xauthority
 pip install yt-dlp udocker > /dev/null 2>&1
 udocker install > /dev/null 2>&1
 git lfs install > /dev/null 2>&1
