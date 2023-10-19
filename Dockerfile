@@ -18,4 +18,4 @@ WORKDIR ${HOME}
 USER ${USER}
 
 COPY entrypoint.sh /entrypoint.sh
-CMD ["/bin/bash", "/entrypoint.sh"]
+RUN chown 1001:1001 /entrypoint.sh
