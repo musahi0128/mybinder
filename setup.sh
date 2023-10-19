@@ -24,6 +24,6 @@ xdg-user-dirs-update --set DOCUMENTS $HOME/Documents
 xdg-user-dirs-update --set MUSIC $HOME/Music
 xdg-user-dirs-update --set PICTURES $HOME/Pictures
 xdg-user-dirs-update --set VIDEOS $HOME/Videos
-chown -R ${NB_USER}:${NB_USER} $HOME
 chown ${NB_USER}:${NB_USER} $HOME
+chown -R ${NB_USER}:${NB_USER} $HOME
 chown -R ${NB_USER}:${NB_USER} /etc/ssh
