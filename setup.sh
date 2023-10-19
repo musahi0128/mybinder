@@ -11,7 +11,7 @@ rm -rf /var/lib/apt/lists/*
 curl -s https://rclone.org/install.sh | bash
 cd /opt/; curl -sL -o 'firefox-esr.tar.bz2' 'https://download.mozilla.org/?product=firefox-esr-latest-ssl&os=linux64&lang=en-US'; tar xf firefox-esr.tar.bz2; ln -s /opt/firefox/firefox /usr/local/bin/firefox; wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications; rm firefox-esr.tar.bz2
 curl -sL -o "/usr/local/bin/ttyd" "https://github.com/tsl0922/ttyd/releases/download/1.7.4/ttyd.x86_64"; chmod +x /usr/local/bin/ttyd
-adduser --disabled-password --gecos "Default user" --uid ${NB_UID} ${NB_USER}
+adduser --disabled-password --gecos "Default user" --shell /bin/bash --uid ${NB_UID} ${NB_USER}
 sed -i 's/Greybird/Greybird-dark/g' /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 sed -i 's/#Port 22/Port 2022/g' /etc/ssh/sshd_config
 sed -i 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
