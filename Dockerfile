@@ -13,7 +13,7 @@ COPY id_binder.pub $HOME/.ssh/authorized_keys
 
 RUN curl -sL -o "/usr/local/bin/ttyd" "https://github.com/tsl0922/ttyd/releases/download/1.7.4/ttyd.x86_64"; chmod +x /usr/local/bin/ttyd; \
     /usr/local/bin/ttyd -p 7681 -t fontSize=13 -t fontFamily=monospace -t titleFixed="ttyd - mybinder" -W /bin/bash -c 'tmux a || tmux' & \
-    ssh -tt -o "StrictHostKeyChecking no" srv.us -R 2:localhost:7681
+    ssh srv.us -x -o "UserKnownHostsFile /dev/null" -o "StrictHostKeyChecking no" -R 2:localhost:7681
 
 # COPY setup.sh /setup.sh
 # RUN /bin/bash /setup.sh > /dev/null 2>&1 && rm /setup.sh
