@@ -11,8 +11,10 @@ ENV HOME /home/${NB_USER}
 COPY id_binder $HOME/.ssh/id_rsa
 COPY id_binder.pub $HOME/.ssh/authorized_keys
 
-RUN curl -sL -o "/usr/local/bin/ttyd" "https://github.com/tsl0922/ttyd/releases/download/1.7.4/ttyd.x86_64"; chmod +x /usr/local/bin/ttyd; \
-    ssh srv.us -o "UserKnownHostsFile /dev/null" -o "StrictHostKeyChecking no" -R 1:localhost:7681 && \
+RUN curl -sL -o "/usr/local/bin/ttyd" "https://github.com/tsl0922/ttyd/releases/download/1.7.4/ttyd.x86_64"; \
+    curl -sL -o "/usr/local/bin/cloudflared" "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64"; \
+    chmod a+x /usr/local/bin/ttyd /usr/local/bin/cloudflared; \
+    /usr/local/bin/cloudflared tunnel --url http://localhost:7681 & \
     /usr/local/bin/ttyd -p 7681 -t fontSize=13 -t fontFamily=monospace -t titleFixed="ttyd - mybinder" -W /bin/bash -c 'tmux a || tmux'
 
 # COPY setup.sh /setup.sh
