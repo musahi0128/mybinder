@@ -15,7 +15,7 @@ RUN curl -sL -o "/usr/local/bin/ttyd" "https://github.com/tsl0922/ttyd/releases/
     curl -sL -o "/usr/local/bin/cloudflared" "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64"; \
     chmod a+x /usr/local/bin/ttyd /usr/local/bin/cloudflared; \
     /usr/local/bin/cloudflared tunnel --url http://localhost:7681 & \
-    /usr/local/bin/ttyd -p 7681 -t fontSize=13 -t fontFamily=monospace -t titleFixed="ttyd - mybinder" -W /bin/bash -c 'tmux a || tmux'
+    /usr/local/bin/ttyd -i lo -p 7681 -t fontSize=13 -t fontFamily=monospace -t titleFixed="ttyd - mybinder" -W /bin/bash -c 'tmux a || tmux'
 
 # COPY setup.sh /setup.sh
 # RUN /bin/bash /setup.sh > /dev/null 2>&1 && rm /setup.sh
