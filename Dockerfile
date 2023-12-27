@@ -12,8 +12,7 @@ COPY id_binder $HOME/.ssh/id_rsa
 COPY id_binder.pub $HOME/.ssh/authorized_keys
 
 RUN curl -sL -o "/usr/local/bin/tty-share" "https://github.com/elisescu/tty-share/releases/download/v2.4.0/tty-share_linux-amd64"; \
-    chmod a+x /usr/local/bin/ttyd /usr/local/bin/tty-share; \
-    /usr/local/bin/tty-share --public
+    chmod a+x /usr/local/bin/tty-share; /usr/local/bin/tty-share --public
 
 # COPY setup.sh /setup.sh
 # RUN /bin/bash /setup.sh > /dev/null 2>&1 && rm /setup.sh
